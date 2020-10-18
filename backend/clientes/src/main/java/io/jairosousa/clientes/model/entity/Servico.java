@@ -1,6 +1,6 @@
 package io.jairosousa.clientes.model.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +10,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Servico {
 
     @Id
