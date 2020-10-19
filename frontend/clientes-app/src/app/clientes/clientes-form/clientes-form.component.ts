@@ -17,7 +17,7 @@ export class ClientesFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clicar(): void {
+  onSubmit(): void {
     console.log(this.cliente);
 
   }
