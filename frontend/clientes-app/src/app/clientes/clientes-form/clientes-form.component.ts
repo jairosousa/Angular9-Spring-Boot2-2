@@ -13,7 +13,7 @@ export class ClientesFormComponent implements OnInit {
 
   success: boolean = false;
 
-  errors: any;
+  errors: String[];
 
   constructor(private clienteService: ClientesService) {
     this.cliente = new Cliente();
@@ -25,11 +25,14 @@ export class ClientesFormComponent implements OnInit {
   onSubmit(): void {
     this.clienteService.salvar(this.cliente)
       .subscribe(response => {
+        this.cliente = response;
         this.success = true;
+        this.errors = [];
       },
-        errorResponse => this.errors = errorResponse.error.errors
-
-      );
+        errorResponse => {
+          this.success = false;
+          this.errors = errorResponse.error.errors
+        });
 
   }
 
