@@ -9,15 +9,9 @@
             
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success">
-                    <svg class="icon">
-                        <use xlink:href="open-iconic.svg#fire" class="fire"></use>
-                    </svg>
                     Cliente salvo/atualizado com sucesso
                 </div>
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
-                    <svg class="icon">
-                        <use xlink:href="open-iconic.svg#fire" class="fire"></use>
-                    </svg>
                     {{erro}}
                 </div>
             </div>
