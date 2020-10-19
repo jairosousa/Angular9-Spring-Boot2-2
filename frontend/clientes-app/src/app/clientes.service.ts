@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Cliente } from './clientes/cliente';
 
 @Injectable({
@@ -6,7 +8,9 @@ import { Cliente } from './clientes/cliente';
 })
 export class ClientesService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getCliente(): Cliente {
     let cliente: Cliente = new Cliente();
@@ -15,5 +19,9 @@ export class ClientesService {
     cliente.nome = "Fulano de tal";
     cliente.cpf = "9999999999";
     return cliente;
+  }
+
+  salvar(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 }
