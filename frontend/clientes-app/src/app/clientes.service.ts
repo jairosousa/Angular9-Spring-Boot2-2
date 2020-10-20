@@ -20,6 +20,10 @@ export class ClientesService {
     return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 
+  atualizar(cliente: Cliente): Observable<any> {
+    return this.http.put<any>(`http://localhost:8080/api/clientes/${cliente.id}`, cliente);
+  }
+
   getClienteById(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(`http://localhost:8080/api/clientes/${id}`);
   }
