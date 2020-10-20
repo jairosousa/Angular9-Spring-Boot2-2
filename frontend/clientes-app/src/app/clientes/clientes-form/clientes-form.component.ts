@@ -26,14 +26,17 @@ export class ClientesFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let params = this.activatedRouter.snapshot.params['id'];
-    if (params) {
-      this.id = params;
-      this.clienteService
-        .getClienteById(this.id)
-        .subscribe(response => this.cliente = response,
-          errorresponse => this.cliente = new Cliente())
-    }
+    this.activatedRouter.params
+      .subscribe(urlParams => {
+        this.id = urlParams['id'];
+        if (this.id) {
+          this.clienteService
+            .getClienteById(this.id)
+            .subscribe(response => this.cliente = response,
+              errorresponse => this.cliente = new Cliente())
+        }
+      });
+
   }
 
   onSubmit(): void {
