@@ -11,10 +11,11 @@ export class ClientesListaComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-  constructor(private sertvice: ClientesService) { }
+  constructor(private service: ClientesService) { }
 
   ngOnInit(): void {
-    this.clientes = this.sertvice.getClientesMoc();
+    this.service.getClientes()
+      .subscribe(resposta => this.clientes = resposta);
   }
 
 
