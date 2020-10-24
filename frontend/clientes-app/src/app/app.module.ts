@@ -7,6 +7,7 @@ import { ClientesService } from './clientes.service';
 import { ClientesModule } from './clientes/clientes.module';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { ServicoPrestadoService } from './servico-prestado.service';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { TemplateModule } from './template/template.module';
 
@@ -25,7 +26,7 @@ import { TemplateModule } from './template/template.module';
     HttpClientModule,
     ServicoPrestadoModule
   ],
-  providers: [ClientesService],
+  providers: [ClientesService, ServicoPrestadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
