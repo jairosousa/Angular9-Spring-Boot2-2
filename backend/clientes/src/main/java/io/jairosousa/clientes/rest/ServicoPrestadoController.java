@@ -5,6 +5,7 @@ import io.jairosousa.clientes.model.entity.ServicoPrestado;
 import io.jairosousa.clientes.model.repository.ClienteRepository;
 import io.jairosousa.clientes.model.repository.ServicoPrestadoRepository;
 import io.jairosousa.clientes.rest.dto.ServicoPrestadoDTO;
+import io.jairosousa.clientes.util.BigDecimoConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,10 @@ public class ServicoPrestadoController {
     @Autowired
     private final ServicoPrestadoRepository servicoPrestadoRepository;
 
+    private final BigDecimoConverter converter;
+
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ServicoPrestado salvar(@RequestBody ServicoPrestadoDTO dto) {
         LocalDate date = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Cliente cliente = clienteRepository.findById(dto.getIdCliente())
@@ -36,7 +40,9 @@ public class ServicoPrestadoController {
         servicoPrestado.setDescricao(dto.getDescricao());
         servicoPrestado.setData(date);
         servicoPrestado.setCliente(cliente);
-        servicoPrestado.setValor();
+        servicoPrestado.setValor(converter.converter(dto.getPreco()));
+
+        return servicoPrestadoRepository.save(servicoPrestado);
 
     }
 }

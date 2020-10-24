@@ -1,5 +1,6 @@
 package io.jairosousa.clientes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class ServicoPrestado {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column
     private LocalDate data;
 }
