@@ -4,6 +4,17 @@
 </ol>
 
 <div class="container-fluid">
+    <div class="row">
+    
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="menssagemSucesso">
+                {{menssagemSucesso}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="menssagemErro">
+                {{menssagemErro}}
+            </div>
+        </div>
+    </div>
 .<div class="row">
     <div class="col-md-2">
         <button class="btn btn-primary" (click)="novoCadastro() ">
@@ -56,8 +67,8 @@
                Confirma a deleção do(a) Cliente {{clienteSelecionado?.nome}}?
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success">Confirma</button>
-                <button class="btn btn-default ml-2" data-dismiss="modal">Cancela</button>
+                <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Confirmar</button>
+                <button class="btn btn-default ml-2" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
