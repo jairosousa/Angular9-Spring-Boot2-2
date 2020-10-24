@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -13,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Servico {
+public class ServicoPrestado {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -28,4 +29,7 @@ public class Servico {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+    @Column
+    private LocalDate data;
 }
