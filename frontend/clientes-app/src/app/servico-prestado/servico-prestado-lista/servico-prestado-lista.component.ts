@@ -14,6 +14,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   mes: number;
   meses: Meses[];
   lista: ServicoPrestadoBusca[];
+  message: string;
 
   constructor(
     private servicoPrestadoService: ServicoPrestadoService
@@ -40,7 +41,11 @@ export class ServicoPrestadoListaComponent implements OnInit {
     this.servicoPrestadoService.buscar(this.nome, this.mes)
       .subscribe(response => {
         this.lista = response;
-        console.log(this.lista);
+        if (this.lista.length <= 0) {
+          this.message = 'Nenhum registro encontrado';
+        } else {
+          this.message = null;
+        }
 
       });
 
