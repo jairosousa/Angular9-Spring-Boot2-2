@@ -3,7 +3,8 @@
     <li class="breadcrumb-item active">Consulta</li>
 </ol>
 
-.<div class="container">
+.
+<div class="container">
     <form #consultarForm="ngForm" (submit)="consultar()">
         <div class="row">
             <div class="col-md-6">
@@ -21,8 +22,11 @@
         <br>
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary mr-2">
                     <i class="fa fa-search"></i>Consultar
+                </button>
+                <button type="button" class="btn btn-warning" routerLink="/servico-prestado-form">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> novo
                 </button>
             </div>
         </div>

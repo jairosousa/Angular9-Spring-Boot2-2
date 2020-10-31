@@ -20,9 +20,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="cliente">Cliente:</label>
-                    <select class="form-control" 
-                        [(ngModel)]="servico.idCliente" 
-                        [ngModelOptions]="{standalone: true}">
+                    <select class="form-control" [(ngModel)]="servico.idCliente" [ngModelOptions]="{standalone: true}">
                         <option value="">Selecione...</option>
                         <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
                             {{cliente.nome}}
@@ -36,7 +34,7 @@
                     <input id="inputdata" type="text" class="form-control" [(ngModel)]="servico.data" name="data" />
                 </div>
             </div>
-            
+
         </div>
 
         <div class="row">
@@ -49,18 +47,21 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="inputpreco">Preço:</label>
-                    <input id="inputpreco" type="text" class="form-control" [(ngModel)]="servico.preco"
-                        name="preco" />
+                    <input id="inputpreco" type="text" class="form-control" [(ngModel)]="servico.preco" name="preco" />
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success mr-2">
                     <i class="fa fa-save"></i> Salvar
                 </button>
-                
+
+                <button type="button" class="btn btn-warning" routerLink="/servico-prestado-listagem">
+                        <i class="fa fa-arrow-circle-left"></i> Voltar
+                </button>
+
             </div>
         </div>
     </form>
