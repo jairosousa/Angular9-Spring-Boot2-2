@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../clientes.service';
 import { Cliente } from '../../clientes/cliente';
+import { ServicoPrestadoService } from '../../servico-prestado.service';
 import { ServicoPrestado } from '../servico-prestado';
 
 @Component({
@@ -19,7 +20,8 @@ export class ServicoPrestadoFormComponent implements OnInit {
   errors: String[];
 
   constructor(
-    private servicoCliente: ClientesService
+    private servicoCliente: ClientesService,
+    private servicoPrestado: ServicoPrestadoService
   ) { this.servico = new ServicoPrestado() }
 
   ngOnInit(): void {
@@ -28,7 +30,11 @@ export class ServicoPrestadoFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.servico);
+    this.servicoPrestado.salvar(this.servico)
+      .subscribe(response => {
+        console.log(response);
+
+      })
 
   }
 
