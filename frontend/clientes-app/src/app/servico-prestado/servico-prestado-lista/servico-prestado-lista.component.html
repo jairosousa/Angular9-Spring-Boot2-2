@@ -14,7 +14,7 @@
                 <label for="inputMes">Mes :</label>
                 <select name="mes" [(ngModel)]="mes" class="form-control">
                     <option value="">Selecione...</option>
-                    <option *ngFor="let mes of meses" [value]="mes">{{mes}}</option>
+                    <option *ngFor="let mes of meses" [value]="mes.idx">{{ mes.mes }}</option>
                 </select>
             </div>
         </div>
