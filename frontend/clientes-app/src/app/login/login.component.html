@@ -6,11 +6,13 @@
                     <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4"> <i class="fas fa-sign-in-alt"></i> Entrar</h3>
+                                <div class="card-header bg-primary">
+                                    <h3 class="text-center font-weight-light my-4 text-light">
+                                        <i class="fas fa-sign-in-alt"></i> {{cadastrando ? 'Cadastro de novo usuário' : 'Entrar'}}
+                                    </h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="alert alert-danger" role="alert">
+                                    <div class="alert alert-danger" role="alert" *ngIf="loginError">
                                         login e/ou Senha incorreto(a)
                                     </div>
                                     <form #loginForm="ngForm" (submit)="onSubmit()">
@@ -22,10 +24,19 @@
                                             <label class="small mb-1" for="inputPassword">Password</label>
                                             <input id="inputPassword" class="form-control py-4" type="password" name="password" [(ngModel)]="password" placeholder="Digite sua senha">
                                         </div>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+                                        <div class="form-group align-items-center justify-content-between mt-4 mb-0">
+                                            <button type="submit" class="btn btn-primary" *ngIf="!cadastrando"><i class="fas fa-paper-plane"></i> Enviar</button>
+                                            <button type="button" class="btn btn-primary mr-2" *ngIf="cadastrando"><i class="fas fa-paper-plane"></i> Cadastrar</button>
+                                            <button type="button" class="btn btn-warning" *ngIf="cadastrando" (click)="cancelaCadastro()"><i class="fas fa-window-close"></i> Cancelar</button>
                                         </div>
                                     </form>
+                                </div>
+                                <div class="card-footer text-center bg-primary">
+                                    <div class="small">
+                                        <a href="#" (click)="preparandoCadastrar($event)">
+                                            <span class="text-light">Não possui usuário? Cadastra-se!</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
