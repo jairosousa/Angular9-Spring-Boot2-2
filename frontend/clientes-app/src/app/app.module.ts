@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ServicoPrestadoService } from './servico-prestado.service';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { TemplateModule } from './template/template.module';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TemplateModule } from './template/template.module';
     AppComponent,
     HomeComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
