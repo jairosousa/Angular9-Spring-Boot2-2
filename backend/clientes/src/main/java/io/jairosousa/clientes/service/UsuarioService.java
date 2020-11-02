@@ -2,14 +2,13 @@ package io.jairosousa.clientes.service;
 
 import io.jairosousa.clientes.model.entity.Usuario;
 import io.jairosousa.clientes.model.repository.UsuarioRepository;
+import io.jairosousa.clientes.exception.UsuarioCasdastradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UsuarioService implements UserDetailsService {
@@ -28,5 +27,14 @@ public class UsuarioService implements UserDetailsService {
                 .password(usuario.getPassword())
                 .roles("USER")
                 .build();
+    }
+
+    public Usuario salvar(Usuario usuario) {
+        boolean exists = repository.existsByUsername(usuario.getUsername());
+        if (exists) {
+            throw new UsuarioCasdastradoException(usuario.getUsername());
+        }
+        return repository.save(usuario);
+
     }
 }
