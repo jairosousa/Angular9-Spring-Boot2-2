@@ -26,7 +26,9 @@ export class LoginComponent {
   onSubmit() {
     this.auth.tentarLogar(this.username, this.password)
       .subscribe(response => {
-        console.log("TOKEN ", response);
+        const access_token = JSON.stringify(response);
+        console.log(access_token)
+        localStorage.setItem('access_token', access_token);
 
         this.router.navigate(['/home']);
       }, errorResponse => {
