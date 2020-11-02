@@ -24,13 +24,22 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    this.router.navigate(['/home']);
+    this.auth.tentarLogar(this.username, this.password)
+      .subscribe(response => {
+        console.log("TOKEN ", response);
+
+        this.router.navigate(['/home']);
+      }, errorResponse => {
+        this.errors = ['Usuario e/ou senha incorresto(s).']
+      })
+
 
   }
 
   preparandoCadastrar(event) {
     event.preventDefault();
     this.cadastrando = true;
+    this.errors = [];
   }
 
   cancelaCadastro() {
