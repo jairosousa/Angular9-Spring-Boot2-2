@@ -30,11 +30,16 @@
                         <a class="nav-link" routerLink="/servico-prestado/lista">Lista</a>
                     </nav>
                 </div>
+                <div class="sb-sidenav-menu-heading">Logout</div>
+                <a href="#" class="nav-link collapsed" (click)="logout()" data-toggle="collapse">
+                    <div class="sb-nav-link-icon"><i class="fa fa-sign-out-alt" aria-hidden="true"></i></div>
+                    Sair
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <div class="small">Usuário:</div>
+            {{usuarioLogado}}
         </div>
     </nav>
 </div>
