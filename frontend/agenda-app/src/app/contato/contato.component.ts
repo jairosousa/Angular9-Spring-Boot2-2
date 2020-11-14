@@ -22,12 +22,23 @@ export class ContatoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.montarFormulario();
+    this.listarContatos();
+
+  }
+
+  montarFormulario() {
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]]
     })
+  }
 
-
+  listarContatos() {
+    this.service.list()
+      .subscribe((contatos: Contato[]) => {
+        this.contatos = contatos;
+      })
   }
 
   submit() {
