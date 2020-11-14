@@ -27,6 +27,13 @@ export class ContatoComponent implements OnInit {
 
   }
 
+  favoritar(contato: Contato) {
+    this.service.favourite(contato)
+      .subscribe(resposta => {
+        contato.favorito = !contato.favorito;
+      })
+  }
+
   montarFormulario() {
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
