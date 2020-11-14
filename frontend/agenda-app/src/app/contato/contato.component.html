@@ -28,5 +28,5 @@
         </div>
     </div>
 
-    <button mat-button color="primary">Adicionar</button>
+    <button [disabled]="!formulario.valid" mat-button color="primary">Adicionar</button>
 </form>
